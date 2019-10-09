@@ -1,0 +1,84 @@
+﻿Sample command-
+
+      node index.js --filePath=leads[1][1][1].json --column1=_id --column2=email --sortBy=entryDate
+
+
+
+Note: This program is extensible to allow any column name for filtering and sorting in the above params which can 
+      easily be extended to cater to multiple files/folders with minimal changes.
+
+      Linting, unit test, component test and smoke test framework is built in the program with code coverage and
+      unit testing reports printable to console running the program or can be published to external data miners as junit reports.
+
+      Different types of tests can be called as different stages of the CI/CD pipeline and based on successful/failed execution, if matches
+      minimum test passed threshold or not, can be either allowed to deploy or create alerts for developers to look into it further.
+
+
+------------------------------------------------------------------- Unique Records -------------------------------------------------------------------
+┌─────────┬────────────────────────┬────────────────┬────────────┬───────────┬───────────────────┬─────────────────────────────┬──────┐
+│ (index) │          _id           │     email      │ firstName  │ lastName  │      address      │          entryDate          │ rank │
+├─────────┼────────────────────────┼────────────────┼────────────┼───────────┼───────────────────┼─────────────────────────────┼──────┤
+│    0    │  'jkj238238jdsnfsj23'  │ 'bill@bar.com' │   'John'   │  'Smith'  │ '888 Mayberry St' │ '2014-05-07T17:33:20+00:00' │  10  │
+│    1    │  'belr28238jdsnfsj23'  │ 'mae@bar.com'  │ 'Tallulah' │  'Smith'  │  '123 Water St'   │ '2014-05-07T17:33:20+00:00' │  9   │
+│    2    │  'vug789238jdsnfsj23'  │ 'foo1@bar.com' │  'Blake'   │ 'Douglas' │  '123 Reach St'   │ '2014-05-07T17:33:20+00:00' │  7   │
+│    3    │ 'wabaj238238jdsnfsj23' │ 'bog@bar.com'  │   'Fran'   │  'Jones'  │  '8803 Dark St'   │ '2014-05-07T17:31:20+00:00' │  3   │
+└─────────┴────────────────────────┴────────────────┴────────────┴───────────┴───────────────────┴─────────────────────────────┴──────┘
+
+
+-------------------------------------------------------------------- Grouped Records --------------------------------------------------------------------
+┌─────────┬──────────────────────┬────────────────┬───────────┬──────────┬───────────────────┬─────────────────────────────┬──────┐
+│ (index) │         _id          │     email      │ firstName │ lastName │      address      │          entryDate          │ rank │
+├─────────┼──────────────────────┼────────────────┼───────────┼──────────┼───────────────────┼─────────────────────────────┼──────┤
+│    0    │ 'jkj238238jdsnfsj23' │ 'bill@bar.com' │  'John'   │ 'Smith'  │ '888 Mayberry St' │ '2014-05-07T17:33:20+00:00' │  10  │
+│    1    │ 'wuj08238jdsnfsj23'  │ 'foo@bar.com'  │  'Micah'  │ 'Valmer' │  '123 Street St'  │ '2014-05-07T17:33:20+00:00' │  8   │
+│    2    │ 'qest38238jdsnfsj23' │ 'foo@bar.com'  │  'John'   │ 'Smith'  │  '123 Street St'  │ '2014-05-07T17:32:20+00:00' │  6   │
+│    3    │ 'sel045238jdsnfsj23' │ 'foo@bar.com'  │  'John'   │ 'Smith'  │  '123 Street St'  │ '2014-05-07T17:32:20+00:00' │  5   │
+│    4    │ 'jkj238238jdsnfsj23' │ 'coo@bar.com'  │   'Ted'   │ 'Jones'  │   '456 Neat St'   │ '2014-05-07T17:32:20+00:00' │  4   │
+│    5    │ 'jkj238238jdsnfsj23' │ 'foo@bar.com'  │  'John'   │ 'Smith'  │  '123 Street St'  │ '2014-05-07T17:30:20+00:00' │  1   │
+└─────────┴──────────────────────┴────────────────┴───────────┴──────────┴───────────────────┴─────────────────────────────┴──────┘
+┌─────────┬──────────────────────┬───────────────┬────────────┬───────────┬───────────────────────┬─────────────────────────────┬──────┐
+│ (index) │         _id          │     email     │ firstName  │ lastName  │        address        │          entryDate          │ rank │
+├─────────┼──────────────────────┼───────────────┼────────────┼───────────┼───────────────────────┼─────────────────────────────┼──────┤
+│    0    │ 'belr28238jdsnfsj23' │ 'mae@bar.com' │ 'Tallulah' │  'Smith'  │    '123 Water St'     │ '2014-05-07T17:33:20+00:00' │  9   │
+│    1    │ 'edu45238jdsnfsj23'  │ 'mae@bar.com' │   'Ted'    │ 'Masters' │ '44 North Hampton St' │ '2014-05-07T17:31:20+00:00' │  2   │
+└─────────┴──────────────────────┴───────────────┴────────────┴───────────┴───────────────────────┴─────────────────────────────┴──────┘
+┌─────────┬────────────────────────┬───────────────┬───────────┬──────────┬────────────────┬─────────────────────────────┬──────┐
+│ (index) │          _id           │     email     │ firstName │ lastName │    address     │          entryDate          │ rank │
+├─────────┼────────────────────────┼───────────────┼───────────┼──────────┼────────────────┼─────────────────────────────┼──────┤
+│    0    │ 'wabaj238238jdsnfsj23' │ 'bog@bar.com' │  'Fran'   │ 'Jones'  │ '8803 Dark St' │ '2014-05-07T17:31:20+00:00' │  3   │
+└─────────┴────────────────────────┴───────────────┴───────────┴──────────┴────────────────┴─────────────────────────────┴──────┘
+┌─────────┬──────────────────────┬────────────────┬───────────┬───────────┬────────────────┬─────────────────────────────┬──────┐
+│ (index) │         _id          │     email      │ firstName │ lastName  │    address     │          entryDate          │ rank │
+├─────────┼──────────────────────┼────────────────┼───────────┼───────────┼────────────────┼─────────────────────────────┼──────┤
+│    0    │ 'vug789238jdsnfsj23' │ 'foo1@bar.com' │  'Blake'  │ 'Douglas' │ '123 Reach St' │ '2014-05-07T17:33:20+00:00' │  7   │
+└─────────┴──────────────────────┴────────────────┴───────────┴───────────┴────────────────┴─────────────────────────────┴──────┘
+
+
+
+------------------- Duplicate Record - Source and Destination -------------------
+
+┌───────────┬───────────────────────────────────────────────────────────┐
+│  (index)  │                          Values                           │
+├───────────┼───────────────────────────────────────────────────────────┤
+│    _id    │        'jkj238238jdsnfsj23 --> jkj238238jdsnfsj23'        │
+│   email   │              'foo@bar.com --> bill@bar.com'               │
+│ firstName │                      'John --> John'                      │
+│ lastName  │                     'Smith --> Smith'                     │
+│  address  │            '123 Street St --> 888 Mayberry St'            │
+│ entryDate │ '2014-05-07T17:30:20+00:00 --> 2014-05-07T17:33:20+00:00' │
+│   rank    │                        '1 --> 10'                         │
+└───────────┴───────────────────────────────────────────────────────────┘
+
+------------------- Duplicate Record - Source and Destination -------------------
+
+┌───────────┬───────────────────────────────────────────────────────────┐
+│  (index)  │                          Values                           │
+├───────────┼───────────────────────────────────────────────────────────┤
+│    _id    │        'edu45238jdsnfsj23 --> belr28238jdsnfsj23'         │
+│   email   │               'mae@bar.com --> mae@bar.com'               │
+│ firstName │                    'Ted --> Tallulah'                     │
+│ lastName  │                    'Masters --> Smith'                    │
+│  address  │          '44 North Hampton St --> 123 Water St'           │
+│ entryDate │ '2014-05-07T17:31:20+00:00 --> 2014-05-07T17:33:20+00:00' │
+│   rank    │                         '2 --> 9'                         │
+└───────────┴───────────────────────────────────────────────────────────┘

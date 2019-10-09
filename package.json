@@ -1,0 +1,31 @@
+{
+  "name": "marketo-dedup-records",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node tests/utilitySpec.js --junitreport --output reports/unit",
+    "integration-test": "jasmine-node tests/utilitySpec.js --junitreport --output reports/unit",
+    "beta-test": "jasmine-node tests/utilitySpec.js --junitreport --output reports/unit",
+    "test:coverage": "nyc --reporter=lcov --reporter=json-summary --report-dir=reports/unit/coverage npm run test",
+    "test:coverage-console": "nyc npm run test",
+    "lint": "eslint . --config=eslintrc.json"
+  },
+  "author": "Dhiraj Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "acorn": "^7.1.0",
+    "eslint": "^6.5.1",
+    "nyc": "^14.1.1",
+    "yargs": "^14.0.0"
+  },
+  "devDependencies": {
+    "eslint-output": "^1.2.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "jasmine": "^3.5.0",
+    "jasmine-node": "^3.0.0"
+  }
+}
